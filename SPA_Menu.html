@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>SPA Menu</title>
+	<style type="text/css">
+		body{
+			background-color: #eee;
+		}
+
+		.navigasi{
+			background-color: skyblue;
+			padding: 10px;
+		}
+
+		.menu{
+			padding: 10px;
+			color: white;
+		}
+		.menu:hover{
+			cursor: pointer;
+			background-color: black;
+		}
+
+		.aktif{
+			background-color: black;
+		}
+
+		.home{
+			background-color: mintcream;
+			padding: 10px;
+		}
+
+		.isi{
+			display: none;
+			background-color: mintcream;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="navigasi">
+		<span class="menu aktif" id="menu_1">Home</span>
+		<span class="menu" id="menu_2">Produk</span>
+		<span class="menu" id="menu_3">Kontak</span>
+	</div>
+	<div class="home" id="isi_1">
+		<h2>ini adalah Beranda. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem, minima praesentium fugit voluptates nemo ad ipsa voluptas, unde voluptatem dolores illum ipsam, voluptatum dolor accusamus a rerum odio in officia.</h2>
+	</div>
+	<div class="isi" id="isi_2">
+		<h2>Ini adalah produk. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum et delectus, fugiat magnam animi autem voluptate nesciunt. Fugit, cumque est aliquid necessitatibus eius eum, delectus, dolorem distinctio nesciunt reiciendis qui.</h2>
+	</div>
+	<div class="isi" id="isi_3">
+		<h2>Ini adalah kontak. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur asperiores, facere aliquam ad odio voluptate quasi placeat nisi veniam nam perspiciatis pariatur vitae veritatis ullam! Unde earum laboriosam aliquam esse.</h2>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+		    $(".menu").click(function(){
+		        let menu_id = $(this).prop('id');
+		        let split = menu_id.split('_');
+		        let id = split[1];
+
+		        $(".menu").removeClass('aktif');
+		        $("#menu_"+id).addClass('aktif');
+
+		        $(".home").slideUp();
+		        $("#isi_1").slideUp();
+		        $("#isi_2").slideUp();
+		        $("#isi_3").slideUp();
+		        $("#isi_"+id).slideToggle();
+		    });
+		});
+	</script>
+</body>
+</html>
